@@ -1,21 +1,20 @@
 package contas
 
-import (
-	"banco/clientes"
-)
+import "banco/clientes"
 
-type ContaCorrente struct {
-	Titular clientes.Titular
-	Agencia int
-	Conta   int
-	saldo   float64
+type ContaPoupanca struct {
+	Titular   clientes.Titular
+	Agencia   int
+	Conta     int
+	saldo     float64
+	Operacoes int
 }
 
-func (c *ContaCorrente) VerificarSaldo() float64 {
+func (c *ContaPoupanca) VerificarSaldo() float64 {
 	return c.saldo
 }
 
-func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino *ContaCorrente) string {
+func (c *ContaPoupanca) Transferir(valorTransferencia float64, contaDestino *ContaCorrente) string {
 
 	podeTransferir := valorTransferencia <= c.saldo && valorTransferencia > 0
 
@@ -28,7 +27,7 @@ func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino *Con
 	}
 }
 
-func (c *ContaCorrente) Depositar(valor float64) string {
+func (c *ContaPoupanca) Depositar(valor float64) string {
 	podeDepositar := valor > 0
 	if podeDepositar {
 		c.saldo += valor
@@ -38,7 +37,7 @@ func (c *ContaCorrente) Depositar(valor float64) string {
 	}
 }
 
-func (c *ContaCorrente) Sacar(valorSaque float64) (string, float64) {
+func (c *ContaPoupanca) Sacar(valorSaque float64) (string, float64) {
 
 	podeSacar := valorSaque <= c.saldo && valorSaque > 0
 

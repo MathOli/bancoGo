@@ -3,8 +3,16 @@ package main
 import (
 	"banco/clientes"
 	"banco/contas"
-	"fmt"
+	// "fmt"
 )
+
+type verificaConta interface {
+	Sacar(valor float64) string
+}
+
+func PagarBoleto(conta verificaConta, valorBoleto float64) {
+	conta.Sacar(valorBoleto)
+}
 
 func main() {
 
@@ -13,25 +21,26 @@ func main() {
 		Titular: joao,
 		Agencia: 589,
 		Conta:   123456,
-		Saldo:   1000.00,
 	}
 
 	marcela := clientes.Titular{Nome: "Marcela Lima", CPF: "321.321.321-32", Profissao: "Engenheira de Software"}
-	conta2 := contas.ContaCorrente{
+	conta2 := contas.ContaPoupanca{
 		Titular: marcela,
 		Agencia: 589,
 		Conta:   123456,
-		Saldo:   1000.00,
 	}
 
-	fmt.Println(conta1.Titular.Nome)
-	fmt.Println(conta1.Saldo)
-	fmt.Println(conta2.Titular.Nome)
-	fmt.Println(conta2.Saldo)
-	fmt.Println(conta1.Transferir(100, &conta2))
-	fmt.Println(conta1.Titular.Nome)
-	fmt.Println(conta1.Saldo)
-	fmt.Println(conta2.Titular.Nome)
-	fmt.Println(conta2.Saldo)
+	conta1.Depositar(1000)
+	conta2.Depositar(1000)
+
+	// fmt.Println(conta1.Titular.Nome)
+	// fmt.Println(conta1.VerificarSaldo())
+	// fmt.Println(conta2.Titular.Nome)
+	// fmt.Println(conta2.VerificarSaldo())
+	// fmt.Println(conta1.Transferir(100, &conta2))
+	// fmt.Println(conta1.Titular.Nome)
+	// fmt.Println(conta1.VerificarSaldo())
+	// fmt.Println(conta2.Titular.Nome)
+	// fmt.Println(conta2.VerificarSaldo())
 
 }
