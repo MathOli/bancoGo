@@ -3,7 +3,6 @@ package main
 import (
 	"banco/clientes"
 	"banco/contas"
-	// "fmt"
 )
 
 type verificaConta interface {
