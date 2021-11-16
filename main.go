@@ -33,14 +33,4 @@ func main() {
 	conta1.Depositar(1000)
 	conta2.Depositar(1000)
 
-	// fmt.Println(conta1.Titular.Nome)
-	// fmt.Println(conta1.VerificarSaldo())
-	// fmt.Println(conta2.Titular.Nome)
-	// fmt.Println(conta2.VerificarSaldo())
-	// fmt.Println(conta1.Transferir(100, &conta2))
-	// fmt.Println(conta1.Titular.Nome)
-	// fmt.Println(conta1.VerificarSaldo())
-	// fmt.Println(conta2.Titular.Nome)
-	// fmt.Println(conta2.VerificarSaldo())
-
 }
